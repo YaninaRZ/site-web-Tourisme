@@ -1,28 +1,39 @@
+import { PageHead } from '../components/PageHead'
+
 export function AppPage() {
   return (
-    <section className="band band-grid">
-      <div className="container">
-        <header className="page-header">
-          <span className="sticker-label sticker-blue">📱 dans l’app uniquement</span>
-          <h1 className="title-xl">l’app Ynspire</h1>
-          <p>Certaines fonctionnalités sont réservées à l’application mobile.</p>
-        </header>
-
-        <div className="cards">
-          <article className="pick pick-static">
-            <p className="pick-cat">🎁 Avantages</p>
-            <h3>Des avantages chez nos partenaires</h3>
-            <p className="pick-text">Réductions et offres, disponibles uniquement dans l’app.</p>
+    <>
+      <PageHead
+        title={
+          <>
+            L’app Ynspire, <em>pour aller plus loin</em>
+          </>
+        }
+        intro="Certaines fonctionnalités sont réservées aux adhérents, dans l’application mobile."
+        variant={6}
+      />
+      <section className="block">
+        <div className="ctas4">
+          <article className="uc uc-static">
+            <span className="n">Avantages</span>
+            <span className="d">Réductions et offres chez nos partenaires, disponibles uniquement dans l’app.</span>
+            <span className="c"><span>Adhérents</span></span>
           </article>
-          <article className="pick pick-static">
-            <p className="pick-cat">💬 Communauté</p>
-            <h3>Un espace réservé aux adhérents</h3>
-            <p className="pick-text">
-              Partage tes découvertes : chaque publication contient une photo et un commentaire.
-            </p>
+          <article className="uc uc-static">
+            <span className="n">Communauté</span>
+            <span className="d">
+              Un espace pour partager vos découvertes. Chaque publication contient une photo et un
+              commentaire.
+            </span>
+            <span className="c"><span>Adhérents</span></span>
+          </article>
+          <article className="uc uc-static">
+            <span className="n">Carnet</span>
+            <span className="d">Gardez les lieux et événements qui vous tentent, pour plus tard.</span>
+            <span className="c"><span>Bientôt</span></span>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }

@@ -5,6 +5,7 @@ import { ArticlePage, Blog } from './pages/Blog'
 import { CategoryPage } from './pages/CategoryPage'
 import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
+import { PlacePage } from './pages/PlacePage'
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="categories/:slug" element={<CategoryPage />} />
+          <Route path="lieux/:id" element={<PlacePage />} />
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:slug" element={<ArticlePage />} />
           <Route path="application" element={<AppPage />} />

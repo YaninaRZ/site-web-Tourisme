@@ -1,6 +1,6 @@
 # ADR 0006 – Direction visuelle : pastel rétro, stickers et serif
 
-- **Statut** : Accepté
+- **Statut** : Remplacé par l’ADR 0007
 - **Date** : 2026-11-25
 - **Complète** : ADR 0003 (CSS natif avec variables)
 

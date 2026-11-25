@@ -1,32 +1,34 @@
 import { Link, useParams } from 'react-router'
-import { articles, getArticle } from '../data/content'
+import { PageHead } from '../components/PageHead'
+import { articles, formatDate, getArticle } from '../data/content'
 import { NotFound } from './NotFound'
-
-const dateFormat = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
 
 export function Blog() {
   return (
-    <section className="band band-grid">
-      <div className="container">
-        <header className="page-header">
-          <span className="sticker-label sticker-yellow">📝 écrit par l’équipe</span>
-          <h1 className="title-xl">le Blog</h1>
-          <p>Les articles de l’équipe Ynspire.</p>
-        </header>
-        <div className="cards">
+    <>
+      <PageHead
+        title={
+          <>
+            Le blog, <em>au fil des saisons</em>
+          </>
+        }
+        intro="Les articles de l’équipe Ynspire."
+        variant={1}
+      />
+      <section className="block">
+        <ul className="alist">
           {articles.map((a) => (
-            <article key={a.slug} className="pick pick-static">
-              <p className="mono-label">{dateFormat.format(new Date(a.publishedAt))}</p>
-              <h3>{a.title}</h3>
-              <p className="pick-text">{a.excerpt}</p>
-              <Link to={`/blog/${a.slug}`} className="pill pill-sm pill-yellow">
-                Lire l’article
+            <li key={a.slug}>
+              <Link to={`/blog/${a.slug}`}>
+                <span className="alist-date">{formatDate(a.publishedAt)}</span>
+                <span className="alist-title serif">{a.title}</span>
+                <span className="alist-excerpt">{a.excerpt}</span>
               </Link>
-            </article>
+            </li>
           ))}
-        </div>
-      </div>
-    </section>
+        </ul>
+      </section>
+    </>
   )
 }
 
@@ -37,13 +39,14 @@ export function ArticlePage() {
   if (!article) return <NotFound />
 
   return (
-    <section className="band band-paper">
-      <article className="container article">
-        <Link to="/blog" className="back-link">← Tous les articles</Link>
-        <h1 className="title-xl">{article.title}</h1>
-        <p className="mono-label">{dateFormat.format(new Date(article.publishedAt))}</p>
+    <>
+      <PageHead title={article.title} intro={formatDate(article.publishedAt)} variant={3}>
+        <Link className="back" to="/blog">← Tous les articles</Link>
+      </PageHead>
+      <article className="prose">
+        <p className="lead">{article.excerpt}</p>
         <p>{article.content}</p>
       </article>
-    </section>
+    </>
   )
 }

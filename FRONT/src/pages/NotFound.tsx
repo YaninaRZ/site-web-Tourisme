@@ -1,14 +1,19 @@
 import { Link } from 'react-router'
+import { Scene } from '../components/Scene'
+import { currentSeason } from '../lib/season'
 
 export function NotFound() {
   return (
-    <section className="band band-grid">
-      <div className="container page-header center">
-        <h1 className="title-xl">oups, perdu ?</h1>
-        <p>Cette page n’existe pas ou a été déplacée.</p>
-        <Link to="/" className="pill pill-white">
-          <span className="dot dot-pink" aria-hidden="true" /> Retour à l’accueil
-        </Link>
+    <section className="full">
+      <Scene season={currentSeason} variant={7} />
+      <div className="veil" />
+      <div className="in">
+        <div className="entry">
+          <h1>
+            Cette page s’est <em>perdue en chemin</em>.
+          </h1>
+          <Link to="/" className="btn">Retour à l’accueil</Link>
+        </div>
       </div>
     </section>
   )

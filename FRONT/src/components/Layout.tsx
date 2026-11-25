@@ -1,45 +1,37 @@
-import { Link, NavLink, Outlet } from 'react-router'
-
-const year = new Date().getFullYear()
+import { useEffect } from 'react'
+import { Link, NavLink, Outlet, useLocation } from 'react-router'
+import { categories } from '../data/content'
 
 export function Layout() {
+  const { pathname } = useLocation()
+
+  // Chaque nouvelle page s'ouvre en haut
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
   return (
     <div className="app">
-      <header className="site-header">
-        <Link to="/" className="brand" aria-label="Ynspire, accueil">
-          ynspire<span className="brand-star" aria-hidden="true">✦</span>
-        </Link>
-        <nav className="site-nav" aria-label="Navigation principale">
-          <NavLink to="/categories/evenements">Événements</NavLink>
-          <NavLink to="/categories/restos-bars-insolites">Restos & bars</NavLink>
-          <NavLink to="/categories/points-de-vue">Points de vue</NavLink>
+      {/* Barre du haut posée sur le visuel de chaque page */}
+      <header className="top">
+        <Link to="/" className="logo">Ynspire</Link>
+        <nav className="nav" aria-label="Navigation principale">
+          {categories.map((c) => (
+            <NavLink key={c.slug} to={`/categories/${c.slug}`}>{c.short}</NavLink>
+          ))}
           <NavLink to="/blog">Blog</NavLink>
+          <NavLink to="/application">L’app</NavLink>
         </nav>
-        <Link to="/application" className="pill pill-white">
-          <span className="dot dot-pink" aria-hidden="true" /> L’app
-        </Link>
       </header>
 
       <main>
         <Outlet />
       </main>
 
-      <footer className="site-footer">
-        <div className="footer-pills">
-          <a className="pill pill-lg pill-pink" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-            <span className="dot dot-white" aria-hidden="true" /> Suivez-nous sur Instagram →
-          </a>
-          <Link className="pill pill-lg pill-white" to="/application">
-            <span className="dot dot-pink" aria-hidden="true" /> Rejoindre la communauté →
-          </Link>
-          <Link className="pill pill-lg pill-green" to="/blog">
-            <span className="dot dot-white" aria-hidden="true" /> Lire le blog →
-          </Link>
-          <Link className="pill pill-lg pill-blue" to="/categories/evenements">
-            <span className="dot dot-white" aria-hidden="true" /> Voir les événements →
-          </Link>
-        </div>
-        <p className="footer-note">© {year} Ynspire · Côte d’Azur</p>
+      <footer className="foot">
+        <span className="serif foot-logo">Ynspire</span>
+        <span>La Côte d’Azur, autrement.</span>
+        <span>Contenus et visuels d’exemple, à remplacer.</span>
       </footer>
     </div>
   )

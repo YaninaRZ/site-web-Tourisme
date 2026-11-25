@@ -2,15 +2,12 @@
 
 export type CategorySlug = 'evenements' | 'restos-bars-insolites' | 'points-de-vue'
 
-export type AccentColor = 'pink' | 'green' | 'blue' | 'yellow'
-
 export interface Category {
   slug: CategorySlug
   name: string
+  /** Nom court pour la navigation */
+  short: string
   description: string
-  /** Couleur pastel utilisée pour les étiquettes et boutons de la catégorie. */
-  color: AccentColor
-  emoji: string
 }
 
 export interface Place {
@@ -22,6 +19,8 @@ export interface Place {
   /** Uniquement pour les événements (format ISO). */
   startsAt?: string
   endsAt?: string
+  /** Photo (à venir). Sans photo, un paysage dessiné est affiché. */
+  imageUrl?: string
 }
 
 export interface Article {

@@ -1,28 +1,26 @@
 // Données d'exemple en attendant la connexion à Supabase.
 // Les titres sont des placeholders : à remplacer par le vrai contenu.
+import { currentSeason, seasonOf, type Season } from '../lib/season'
 import type { Article, Category, Place } from '../types'
 
 export const categories: Category[] = [
   {
     slug: 'evenements',
     name: 'Événements Côte d’Azur',
+    short: 'Événements',
     description: 'Marchés de Noël, festivals et rendez-vous à ne pas manquer.',
-    color: 'pink',
-    emoji: '🎡',
   },
   {
     slug: 'restos-bars-insolites',
     name: 'Restos & bars insolites',
+    short: 'Restos & bars',
     description: 'Des adresses originales pour manger et boire un verre.',
-    color: 'green',
-    emoji: '🍹',
   },
   {
     slug: 'points-de-vue',
     name: 'Points de vue',
+    short: 'Points de vue',
     description: 'Les plus beaux panoramas de la région.',
-    color: 'blue',
-    emoji: '🌅',
   },
 ]
 
@@ -86,6 +84,41 @@ export function getPlacesByCategory(slug: string) {
   return places.filter((p) => p.categorySlug === slug)
 }
 
+export function getPlace(id: string | undefined) {
+  return places.find((p) => p.id === id)
+}
+
 export function getArticle(slug: string | undefined) {
   return articles.find((a) => a.slug === slug)
+}
+
+/** Position du lieu dans la liste : sert à varier le cadrage du paysage. */
+export function placeIndex(place: Place) {
+  return places.indexOf(place)
+}
+
+/** Saison utilisée pour colorer le visuel : celle de l'événement, sinon la saison en cours. */
+export function placeSeason(place: Place): Season {
+  return place.startsAt ? seasonOf(new Date(place.startsAt)) : currentSeason
+}
+
+const monthYear = new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' })
+const dayMonth = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long' })
+const full = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+
+/** Étiquette courte d'un événement (« décembre 2026 »), ou null pour un lieu permanent. */
+export function placeTag(place: Place) {
+  return place.startsAt ? monthYear.format(new Date(place.startsAt)) : null
+}
+
+/** Dates complètes d'un événement. */
+export function placeDates(place: Place) {
+  if (!place.startsAt) return null
+  const start = new Date(place.startsAt)
+  if (!place.endsAt) return full.format(start)
+  return `Du ${dayMonth.format(start)} au ${full.format(new Date(place.endsAt))}`
+}
+
+export function formatDate(iso: string) {
+  return full.format(new Date(iso))
 }

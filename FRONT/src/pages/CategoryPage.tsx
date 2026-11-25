@@ -1,7 +1,17 @@
+import { useState } from 'react'
 import { NavLink, useParams } from 'react-router'
-import { PlaceCard } from '../components/PlaceCard'
+import { PageHead } from '../components/PageHead'
+import { Feed } from '../components/Tile'
 import { categories, getCategory, getPlacesByCategory } from '../data/content'
 import { NotFound } from './NotFound'
+
+type Filter = 'tout' | 'ephemere' | 'permanent'
+
+const FILTERS: [Filter, string][] = [
+  ['tout', 'Tout'],
+  ['ephemere', 'Éphémère'],
+  ['permanent', 'Permanent'],
+]
 
 export function CategoryPage() {
   const { slug } = useParams()
@@ -9,36 +19,50 @@ export function CategoryPage() {
 
   if (!category) return <NotFound />
 
-  const items = getPlacesByCategory(category.slug)
+  // key : le filtre repart de « Tout » quand on change de catégorie
+  return <CategoryContent key={category.slug} slug={category.slug} />
+}
+
+function CategoryContent({ slug }: { slug: string }) {
+  const category = getCategory(slug)!
+  const [filter, setFilter] = useState<Filter>('tout')
+
+  const all = getPlacesByCategory(slug)
+  const hasEphemeral = all.some((p) => p.startsAt)
+  const items = all.filter((p) =>
+    filter === 'ephemere' ? p.startsAt : filter === 'permanent' ? !p.startsAt : true,
+  )
 
   return (
-    <section className="band band-grid">
-      <div className="container">
-        <header className="page-header">
-          <span className={`sticker-label sticker-${category.color}`}>
-            {category.emoji} catégorie
-          </span>
-          <h1 className="title-xl">{category.name}</h1>
-          <p>{category.description}</p>
-          <nav className="tabs" aria-label="Catégories">
-            {categories.map((c) => (
-              <NavLink key={c.slug} to={`/categories/${c.slug}`} className={`tab tab-${c.color}`}>
-                {c.emoji} {c.name}
-              </NavLink>
-            ))}
-          </nav>
-        </header>
+    <>
+      <PageHead title={category.name} intro={category.description} variant={categories.indexOf(category) + 2} />
 
-        {items.length === 0 ? (
-          <p className="empty">Aucun contenu dans cette catégorie pour le moment.</p>
-        ) : (
-          <div className="cards">
-            {items.map((p) => (
-              <PlaceCard key={p.id} place={p} />
+      <div className="fbar">
+        <nav className="pills" aria-label="Changer de catégorie">
+          {categories.map((c) => (
+            <NavLink key={c.slug} className="pill" to={`/categories/${c.slug}`}>
+              {c.short}
+            </NavLink>
+          ))}
+        </nav>
+        {hasEphemeral && (
+          <div className="pills" role="group" aria-label="Filtrer">
+            {FILTERS.map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                className={`pill ${filter === key ? 'on' : ''}`}
+                aria-pressed={filter === key}
+                onClick={() => setFilter(key)}
+              >
+                {label}
+              </button>
             ))}
           </div>
         )}
       </div>
-    </section>
+
+      <Feed items={items} />
+    </>
   )
 }
