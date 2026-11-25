@@ -7,16 +7,22 @@ export const categories: Category[] = [
     slug: 'evenements',
     name: 'Événements Côte d’Azur',
     description: 'Marchés de Noël, festivals et rendez-vous à ne pas manquer.',
+    color: 'pink',
+    emoji: '🎡',
   },
   {
     slug: 'restos-bars-insolites',
     name: 'Restos & bars insolites',
     description: 'Des adresses originales pour manger et boire un verre.',
+    color: 'green',
+    emoji: '🍹',
   },
   {
     slug: 'points-de-vue',
     name: 'Points de vue',
     description: 'Les plus beaux panoramas de la région.',
+    color: 'blue',
+    emoji: '🌅',
   },
 ]
 

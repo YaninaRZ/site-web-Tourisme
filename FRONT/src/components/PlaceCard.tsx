@@ -1,3 +1,4 @@
+import { getCategory } from '../data/content'
 import type { Place } from '../types'
 
 const dateFormat = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
@@ -11,11 +12,15 @@ function formatDates(place: Place) {
 
 export function PlaceCard({ place }: { place: Place }) {
   const dates = formatDates(place)
+  const category = getCategory(place.categorySlug)
+
   return (
     <article className="card">
-      <div className="card-image" aria-hidden="true" />
+      <div className={`card-image g-${category?.color ?? 'blue'}`} aria-hidden="true">
+        {category?.emoji}
+      </div>
       <div className="card-body">
-        <p className="card-meta">
+        <p className="mono-label">
           {place.city}
           {dates && <> · {dates}</>}
         </p>

@@ -6,20 +6,26 @@ const dateFormat = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'lo
 
 export function Blog() {
   return (
-    <section className="section">
-      <header className="page-header">
-        <h1>Blog</h1>
-        <p>Les articles de l’équipe Ynspire.</p>
-      </header>
-      <ul className="article-list">
-        {articles.map((a) => (
-          <li key={a.slug}>
-            <Link to={`/blog/${a.slug}`}>{a.title}</Link>
-            <p className="card-meta">{dateFormat.format(new Date(a.publishedAt))}</p>
-            <p>{a.excerpt}</p>
-          </li>
-        ))}
-      </ul>
+    <section className="band band-grid">
+      <div className="container">
+        <header className="page-header">
+          <span className="sticker-label sticker-yellow">📝 écrit par l’équipe</span>
+          <h1 className="title-xl">le Blog</h1>
+          <p>Les articles de l’équipe Ynspire.</p>
+        </header>
+        <div className="cards">
+          {articles.map((a) => (
+            <article key={a.slug} className="pick pick-static">
+              <p className="mono-label">{dateFormat.format(new Date(a.publishedAt))}</p>
+              <h3>{a.title}</h3>
+              <p className="pick-text">{a.excerpt}</p>
+              <Link to={`/blog/${a.slug}`} className="pill pill-sm pill-yellow">
+                Lire l’article
+              </Link>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }
@@ -31,11 +37,13 @@ export function ArticlePage() {
   if (!article) return <NotFound />
 
   return (
-    <article className="section article">
-      <Link to="/blog">← Tous les articles</Link>
-      <h1>{article.title}</h1>
-      <p className="card-meta">{dateFormat.format(new Date(article.publishedAt))}</p>
-      <p>{article.content}</p>
-    </article>
+    <section className="band band-paper">
+      <article className="container article">
+        <Link to="/blog" className="back-link">← Tous les articles</Link>
+        <h1 className="title-xl">{article.title}</h1>
+        <p className="mono-label">{dateFormat.format(new Date(article.publishedAt))}</p>
+        <p>{article.content}</p>
+      </article>
+    </section>
   )
 }

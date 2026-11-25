@@ -1,27 +1,27 @@
 export function AppPage() {
   return (
-    <section className="section">
-      <header className="page-header">
-        <h1>L’application Ynspire</h1>
-        <p>Certaines fonctionnalités sont réservées à l’application mobile.</p>
-      </header>
+    <section className="band band-grid">
+      <div className="container">
+        <header className="page-header">
+          <span className="sticker-label sticker-blue">📱 dans l’app uniquement</span>
+          <h1 className="title-xl">l’app Ynspire</h1>
+          <p>Certaines fonctionnalités sont réservées à l’application mobile.</p>
+        </header>
 
-      <div className="cards">
-        <article className="card">
-          <div className="card-body">
-            <h3>Avantages</h3>
-            <p>Des avantages chez nos partenaires, disponibles uniquement dans l’app.</p>
-          </div>
-        </article>
-        <article className="card">
-          <div className="card-body">
-            <h3>Espace communauté</h3>
-            <p>
-              Un espace réservé aux adhérents pour partager leurs découvertes. Chaque publication
-              contient une photo et un commentaire.
+        <div className="cards">
+          <article className="pick pick-static">
+            <p className="pick-cat">🎁 Avantages</p>
+            <h3>Des avantages chez nos partenaires</h3>
+            <p className="pick-text">Réductions et offres, disponibles uniquement dans l’app.</p>
+          </article>
+          <article className="pick pick-static">
+            <p className="pick-cat">💬 Communauté</p>
+            <h3>Un espace réservé aux adhérents</h3>
+            <p className="pick-text">
+              Partage tes découvertes : chaque publication contient une photo et un commentaire.
             </p>
-          </div>
-        </article>
+          </article>
+        </div>
       </div>
     </section>
   )

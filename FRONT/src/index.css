@@ -1,15 +1,32 @@
-/* Variables de couleur : modifiez-les ici pour changer tout le thème */
+/* Thème Ynspire : pastel aqua / rose, titres serif, étiquettes mono.
+   Modifiez les variables ici pour changer tout le site. */
 :root {
-  --primary: #0e6ba8;
-  --primary-dark: #0a4f7d;
-  --text: #1f2933;
-  --muted: #5f6b7a;
-  --bg: #ffffff;
-  --bg-alt: #f5f7f9;
-  --border: #e2e8f0;
-  --radius: 12px;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* Couleurs */
+  --aqua: #cdeef0;
+  --aqua-deep: #9fd6dc;
+  --pink: #f7c3d0;
+  --pink-soft: #fde6ec;
+  --green: #c5da9b;
+  --blue: #bde3e9;
+  --yellow: #f6e3a1;
+  --cream: #fbf7f1;
+  --paper: #ffffff;
+  --ink: #2b2427;
+  --muted: #6e6569;
+  --border: #e9e0d8;
+  --gold: #e7b74a;
+
+  /* Raccourcis */
+  --primary: var(--ink);
+  --radius: 16px;
+  --radius-pill: 999px;
+  --shadow: 0 6px 18px rgba(43, 36, 39, 0.08);
+  --shadow-pop: 3px 3px 0 var(--ink);
+
+  /* Polices */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, Menlo, monospace;
 }
 
 *,
@@ -27,15 +44,26 @@ body {
   font-family: var(--font);
   font-size: 16px;
   line-height: 1.6;
-  color: var(--text);
-  background: var(--bg);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
 h3 {
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   margin: 0 0 0.5rem;
+}
+
+h3 {
+  font-family: var(--font);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
 }
 
 p {
@@ -43,5 +71,28 @@ p {
 }
 
 a {
-  color: var(--primary);
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }
