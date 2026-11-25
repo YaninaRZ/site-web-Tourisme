@@ -1,6 +1,6 @@
-# Projet Tourisme
+# Ynspire
 
-Site web et backend du projet Tourisme. L'app mobile (Expo) vit dans un dépôt séparé et partage le même projet Supabase.
+Site web et backend d’Ynspire : événements, restos & bars insolites et points de vue de la Côte d’Azur. L'app mobile (Expo) vit dans un dépôt séparé et partage le même projet Supabase.
 
 ## Structure
 

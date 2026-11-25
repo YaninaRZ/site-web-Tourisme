@@ -1,7 +1,7 @@
-# Configuration Supabase du projet Tourisme (BDD PostgreSQL + Auth + API)
+# Configuration Supabase du projet Ynspire (BDD PostgreSQL + Auth + API)
 # Un seul projet Supabase est partagé par le site (FRONT) et l'app mobile.
 
-project_id = "tourisme"
+project_id = "ynspire"
 
 [api]
 enabled = true
