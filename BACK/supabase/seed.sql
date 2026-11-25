@@ -1,0 +1,2 @@
+-- Données de test chargées par `supabase db reset`.
+-- À compléter au fur et à mesure de la conception de la BDD (voir Figma).

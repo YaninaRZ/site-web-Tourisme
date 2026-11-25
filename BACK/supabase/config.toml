@@ -1,0 +1,22 @@
+# Configuration Supabase du projet Tourisme (BDD PostgreSQL + Auth + API)
+# Un seul projet Supabase est partagé par le site (FRONT) et l'app mobile.
+
+project_id = "tourisme"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+
+[db]
+port = 54322
+major_version = 17
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173"]
