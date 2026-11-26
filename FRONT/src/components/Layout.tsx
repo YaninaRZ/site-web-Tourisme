@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router'
 import { categories } from '../data/seed'
+import { AppCta } from './AppCta'
 
 const media = [
   { to: '/blog', label: 'Journal' },
@@ -93,6 +94,8 @@ export function Layout() {
       <main>
         <Outlet />
       </main>
+
+      {!pathname.startsWith('/admin') && <AppCta />}
 
       <footer className="foot">
         <div className="foot-brand">

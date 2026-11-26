@@ -29,6 +29,10 @@ Le brief cite Sézane comme référence d'univers de marque : chaleureux, narrat
 - **Étalonnage commun** : toutes les photos passent par le même filtre (`--grade` : désaturé, légèrement chaud) pour un rendu homogène.
 - **Lisibilité** : voile radial, plus dense derrière le titre et léger sur les bords.
 - **Fiche lieu** : photo ou vidéo à gauche, infos collantes à droite.
+- **Appel à télécharger l'app** (`AppCta`) : en bas de chaque page, juste avant le pied de page. Absent du back-office.
+  - À gauche : titre lookbook, avantages de l'app, boutons App Store et Google Play. Ils pointent vers `/application` tant que l'app n'est pas publiée.
+  - À droite : deux iPhones posés sur une photo abstraite.
+  - Les iPhones sont dessinés en HTML/CSS plutôt qu'exportés de Figma. Ils restent nets à toute taille, reprennent les vraies photos, polices et couleurs du site, et se modifient dans le code.
 
 ## Photos de démonstration
 
