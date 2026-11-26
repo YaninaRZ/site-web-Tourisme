@@ -1,4 +1,4 @@
--- Schéma initial Ynspire
+-- Schéma initial UNSPYR
 -- Voir docs/adr/0004-modele-de-donnees.md pour les choix.
 --
 -- Tables :

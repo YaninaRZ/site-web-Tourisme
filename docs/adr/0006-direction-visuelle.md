@@ -6,7 +6,7 @@
 
 ## Contexte
 
-L'équipe a fourni une maquette de référence au style « pastel rétro » : fond aqua et rose, grand titre serif, stickers et emoji qui flottent, bandeau défilant, cartes en carrousel sur fond rose, photos en polaroïd, boutons pilules de couleur. Les visuels définitifs d'Ynspire ne sont pas encore livrés.
+L'équipe a fourni une maquette de référence au style « pastel rétro » : fond aqua et rose, grand titre serif, stickers et emoji qui flottent, bandeau défilant, cartes en carrousel sur fond rose, photos en polaroïd, boutons pilules de couleur. Les visuels définitifs d'UNSPYR ne sont pas encore livrés.
 
 ## Décision
 

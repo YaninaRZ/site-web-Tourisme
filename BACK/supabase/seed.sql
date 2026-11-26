@@ -15,5 +15,5 @@ select id, 'Point de vue (exemple)', 'Description courte du panorama.', 'Èze', 
 from public.categories where slug = 'points-de-vue';
 
 insert into public.articles (slug, title, excerpt, content, published_at) values
-  ('premier-article', 'Premier article (exemple)', 'Le blog Ynspire est rédigé par l''équipe admin.',
+  ('premier-article', 'Premier article (exemple)', 'Le blog UNSPYR est rédigé par l''équipe admin.',
    'Ceci est un article d''exemple.', now());

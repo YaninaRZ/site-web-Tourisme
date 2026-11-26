@@ -5,7 +5,7 @@
 
 ## Contexte
 
-Ynspire présente des contenus par catégories (événements sur la Côte d'Azur, restos et bars insolites, points de vue), un blog rédigé par l'admin, des avantages et un espace communauté réservés à l'application. Dans la communauté, une publication exige une photo et un commentaire. Le site et l'app partagent le même projet Supabase.
+UNSPYR présente des contenus par catégories (événements sur la Côte d'Azur, restos et bars insolites, points de vue), un blog rédigé par l'admin, des avantages et un espace communauté réservés à l'application. Dans la communauté, une publication exige une photo et un commentaire. Le site et l'app partagent le même projet Supabase.
 
 ## Décision
 

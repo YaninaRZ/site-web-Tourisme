@@ -14,7 +14,7 @@ export function Layout() {
     <div className="app">
       {/* Barre du haut posée sur le visuel de chaque page */}
       <header className="top">
-        <Link to="/" className="logo">Ynspire</Link>
+        <Link to="/" className="logo">UNSPYR</Link>
         <nav className="nav" aria-label="Navigation principale">
           {categories.map((c) => (
             <NavLink key={c.slug} to={`/categories/${c.slug}`}>{c.short}</NavLink>
@@ -29,7 +29,7 @@ export function Layout() {
       </main>
 
       <footer className="foot">
-        <span className="serif foot-logo">Ynspire</span>
+        <span className="serif foot-logo">UNSPYR</span>
         <span>La Côte d’Azur, autrement.</span>
         <span>Contenus et visuels d’exemple, à remplacer.</span>
       </footer>

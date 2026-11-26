@@ -6,7 +6,7 @@ export function AppPage() {
       <PageHead
         title={
           <>
-            L’app Ynspire, <em>pour aller plus loin</em>
+            L’app UNSPYR, <em>pour aller plus loin</em>
           </>
         }
         intro="Certaines fonctionnalités sont réservées aux adhérents, dans l’application mobile."

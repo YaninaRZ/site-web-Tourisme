@@ -69,7 +69,7 @@ export const articles: Article[] = [
   {
     slug: 'premier-article',
     title: 'Premier article (exemple)',
-    excerpt: 'Le blog Ynspire est rédigé par l’équipe admin.',
+    excerpt: 'Le blog UNSPYR est rédigé par l’équipe admin.',
     content:
       'Ceci est un article d’exemple. Les articles seront rédigés par l’admin et stockés dans Supabase.',
     publishedAt: '2026-11-25',

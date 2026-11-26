@@ -12,7 +12,7 @@ export function Blog() {
             Le blog, <em>au fil des saisons</em>
           </>
         }
-        intro="Les articles de l’équipe Ynspire."
+        intro="Les articles de l’équipe UNSPYR."
         variant={1}
       />
       <section className="block">
