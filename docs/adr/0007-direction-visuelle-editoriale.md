@@ -1,6 +1,6 @@
 # ADR 0007 – Direction visuelle éditoriale et saisonnière
 
-- **Statut** : Accepté
+- **Statut** : Remplacé par l’ADR 0008
 - **Date** : 2026-11-25
 - **Remplace** : ADR 0006 (pastel rétro)
 

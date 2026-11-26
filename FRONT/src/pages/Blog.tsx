@@ -1,32 +1,31 @@
 import { Link, useParams } from 'react-router'
-import { PageHead } from '../components/PageHead'
-import { articles, formatDate, getArticle } from '../data/content'
+import { ArticleCard, Banner, SectionHead, VideoCard } from '../components/Cards'
+import { useContent } from '../data/store-context'
+import { byNewest, formatDate, photo } from '../lib/format'
 import { NotFound } from './NotFound'
 
 export function Blog() {
+  const { articles } = useContent()
+  const sorted = [...articles].sort(byNewest)
+
   return (
     <>
-      <PageHead
-        title={
-          <>
-            Le blog, <em>au fil des saisons</em>
-          </>
-        }
-        intro="Les articles de l’équipe UNSPYR."
-        variant={1}
+      <Banner
+        image={sorted[0]?.cover ?? ''}
+        kicker="Le journal"
+        title={<>Récits de <em>Riviera</em></>}
+        intro="Des articles de fond et des guides pour ralentir, écrits par l’équipe UNSPYR."
       />
-      <section className="block">
-        <ul className="alist">
-          {articles.map((a) => (
-            <li key={a.slug}>
-              <Link to={`/blog/${a.slug}`}>
-                <span className="alist-date">{formatDate(a.publishedAt)}</span>
-                <span className="alist-title serif">{a.title}</span>
-                <span className="alist-excerpt">{a.excerpt}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <section className="section">
+        {sorted.length > 0 ? (
+          <div className="grid-cards grid-wide">
+            {sorted.map((a) => (
+              <ArticleCard key={a.slug} article={a} />
+            ))}
+          </div>
+        ) : (
+          <p className="empty">Aucun article pour l’instant.</p>
+        )}
       </section>
     </>
   )
@@ -34,19 +33,45 @@ export function Blog() {
 
 export function ArticlePage() {
   const { slug } = useParams()
-  const article = getArticle(slug)
-
+  const { articles, videos } = useContent()
+  const article = articles.find((a) => a.slug === slug)
   if (!article) return <NotFound />
+
+  const video = videos.find((v) => v.id === article.videoId)
+  const more = [...articles].sort(byNewest).filter((a) => a.slug !== article.slug).slice(0, 3)
 
   return (
     <>
-      <PageHead title={article.title} intro={formatDate(article.publishedAt)} variant={3}>
-        <Link className="back" to="/blog">← Tous les articles</Link>
-      </PageHead>
-      <article className="prose">
-        <p className="lead">{article.excerpt}</p>
-        <p>{article.content}</p>
+      <article className="article">
+        <header className="article-head">
+          <Link to="/blog" className="back">← Le journal</Link>
+          <span className="kicker">{formatDate(article.publishedAt)}</span>
+          <h1>{article.title}</h1>
+          <p className="lead">{article.excerpt}</p>
+        </header>
+        <img className="article-cover" src={photo(article.cover, 1800)} alt="" />
+        <div className="prose">
+          {article.content.split(/\n\s*\n/).map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
+        {video && (
+          <aside className="article-video">
+            <VideoCard video={video} />
+          </aside>
+        )}
       </article>
+
+      {more.length > 0 && (
+        <section className="section">
+          <SectionHead kicker="Le journal" title={<>À lire <em>ensuite</em></>} />
+          <div className="grid-cards grid-wide">
+            {more.map((a) => (
+              <ArticleCard key={a.slug} article={a} />
+            ))}
+          </div>
+        </section>
+      )}
     </>
   )
 }

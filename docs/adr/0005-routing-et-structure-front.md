@@ -21,7 +21,7 @@ Le site passe d'une page unique à plusieurs pages : accueil, catalogue par cat�
 | `*` | Page introuvable |
 
 - **Structure** de `FRONT/src/` : `components/` (layout, cartes), `pages/` (une page par route), `data/` (données), `types.ts` (types partagés).
-- **Données d'exemple** dans `src/data/content.ts`, avec les mêmes slugs de catégories que la BDD. Les pages passent par des fonctions (`getCategory`, `getPlacesByCategory`, `getArticle`), qu'on remplacera par des requêtes Supabase sans toucher aux pages.
+- **Données d’exemple** : remplacées par le store de démo de l’ADR 0010 (`src/data/seed.ts` et `src/data/store.tsx`).
 
 ## Alternatives écartées
 

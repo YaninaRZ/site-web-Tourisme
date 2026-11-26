@@ -1,6 +1,6 @@
 # UNSPYR
 
-Site web et backend d’UNSPYR : événements, restos & bars insolites et points de vue de la Côte d’Azur. L'app mobile (Expo) vit dans un dépôt séparé et partage le même projet Supabase.
+Site web et backend d’UNSPYR : média de slow tourism sur la Côte d’Azur (sport & wellness, spots, safe places, clubs & restaurants). L'app mobile (Expo) vit dans un dépôt séparé et partage le même projet Supabase.
 
 ## Structure
 

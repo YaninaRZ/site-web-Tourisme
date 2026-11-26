@@ -1,6 +1,6 @@
 # ADR 0004 – Modèle de données initial (Supabase)
 
-- **Statut** : Proposé (à aligner avec la conception BDD sur Figma, encore vide à cette date)
+- **Statut** : Proposé, complété par l’ADR 0009 (catégories et fiche lieu)
 - **Date** : 2026-11-25
 
 ## Contexte

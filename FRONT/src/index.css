@@ -1,24 +1,28 @@
-/* Thème UNSPYR : lent, cinématographique, éditorial.
-   Tons sombres de saison, texte crème, Instrument Serif + Inter.
-   Les couleurs des paysages par saison sont dans src/lib/season.ts. */
+/* Thème UNSPYR : éditorial et très photographique, inspiré de Sézane.
+   Fond crème, texte presque noir, Instrument Serif pour les titres, Inter pour le texte.
+   Voir docs/adr/0008-direction-visuelle-sezane.md. */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
   /* Texte */
-  --ink: #f3efe8;
-  --soft: #ded8cc;
-  --mute: #bdb6aa;
-  --line: rgba(243, 239, 232, 0.28);
+  --ink: #1d1b18;
+  --soft: #3f3a33;
+  --mute: #6b6459;
+  --line: #e3dccf;
 
   /* Fonds */
-  --bg: #141613;
-  --bg-deep: #121210;
-  --on-ink: #141613; /* texte posé sur fond crème */
+  --bg: #fbf8f3;
+  --paper: #ffffff;
+  --sand: #f2ece2;
+  --on-photo: #fffdf8;
+
+  /* Accent (rare : badges, alertes) */
+  --accent: #9b4a2e;
 
   /* Formes */
-  --radius: 6px;
-  --radius-pill: 99px;
-  --gutter: max(5vw, 16px);
+  --radius: 2px;
+  --gutter: max(4vw, 16px);
+  --header: 72px;
 
   /* Polices */
   --serif: 'Instrument Serif', Georgia, serif;
@@ -36,35 +40,53 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 16px/1.55 var(--sans);
+  font: 15px/1.6 var(--sans);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
 a {
   color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
   font-family: var(--serif);
   font-weight: 400;
-  line-height: 0.95;
+  line-height: 1.05;
   text-wrap: balance;
+}
+
+em {
+  font-style: italic;
 }
 
 p {
   margin: 0;
 }
 
-.serif {
-  font-family: var(--serif);
-  font-weight: 400;
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
 }
 
-a:focus-visible,
-button:focus-visible {
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
@@ -72,7 +94,6 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
-    opacity: 1 !important;
     transition: none !important;
   }
 }
