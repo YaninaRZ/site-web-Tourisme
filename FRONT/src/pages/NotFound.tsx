@@ -8,7 +8,6 @@ export function NotFound() {
       image={PAGE_IMAGES.notFound}
       kicker="Erreur 404"
       title={<>Cette page s’est <em>perdue en chemin</em>.</>}
-      size="tall"
     >
       <Link to="/" className="link-u">Retour à l’accueil</Link>
     </Banner>

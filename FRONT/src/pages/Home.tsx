@@ -28,10 +28,8 @@ export function Home() {
         <div className="postcard">
           <img src={photo(HERO_IMAGE, 1600)} alt="Villefranche-sur-Mer au coucher du soleil" />
           <div className="postcard-text">
-            <span className="kicker">Bons baisers de la Côte d’Azur</span>
-            <h1>
-              La Riviera, <em>autrement</em>.
-            </h1>
+            <p className="lookbook">Bons baisers</p>
+            <h1 className="lookbook">de la Côte d’Azur</h1>
             <Link to="/categories/spots" className="link-u">Découvrir les spots</Link>
           </div>
         </div>

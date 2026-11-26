@@ -20,7 +20,10 @@ Le brief cite Sézane comme référence d'univers de marque : chaleureux, narrat
   - « Nos univers » : 4 grandes photos de catégories ;
   - « Les pépites du moment » : défilement horizontal de cartes ;
   - le journal à la une, puis les micro-métrages sur fond sable.
-- **Pages intérieures** : toutes s'ouvrent sur une bannière photo (`Banner`) avec un titre centré. Cela couvre les catégories, le journal, les articles, les vidéos, la recherche, le contact, les pages légales et la page 404. Trois hauteurs existent : `small` pour les pages utilitaires, `normal` et `tall` pour les articles et la 404.
+- **Pages intérieures** : toutes s'ouvrent sur une bannière photo (`Banner`). Cela couvre les catégories, le journal, les articles, les vidéos, la recherche, le contact, les pages légales et la page 404.
+  - Style « lookbook » Sézane : photo sur toute la hauteur de l'écran (`small` pour les pages utilitaires), voile léger uniforme, deux lignes de titre centrées au milieu en Instrument Serif majuscule espacée (classe `.lookbook`), sans italique.
+  - Le texte d'introduction passe sous la photo.
+  - La carte postale de l'accueil suit le même style.
 - **Fiche lieu** : photo ou vidéo à gauche, infos collantes à droite.
 
 ## Photos de démonstration

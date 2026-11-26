@@ -255,36 +255,15 @@
 
 .postcard {
   position: relative;
+  display: grid;
+  place-items: center;
   overflow: hidden;
   background: var(--sand);
 }
 
-.postcard::after {
-  content: '';
+.postcard > img {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgb(20 18 15 / 0.55), transparent 55%);
-}
-
-.postcard-text {
-  position: absolute;
-  inset: auto 0 0;
-  z-index: 1;
-  display: grid;
-  justify-items: center;
-  gap: 16px;
-  padding: 40px 24px 48px;
-  color: var(--on-photo);
-  text-align: center;
-}
-
-.postcard-text .kicker {
-  color: inherit;
-}
-
-.postcard-text h1 {
-  font-size: clamp(46px, 5.6vw, 84px);
-  line-height: 0.95;
 }
 
 /* ---------- Sections ---------- */
@@ -320,13 +299,18 @@
 
 /* ---------- Bandeau des pages intérieures ---------- */
 
+/* Style « lookbook » : photo plein cadre, titre centré en capitales espacées */
 .banner {
   position: relative;
   display: grid;
-  align-items: end;
-  height: clamp(340px, 56vh, 560px);
+  place-items: center;
+  height: clamp(460px, calc(100svh - var(--header) - 34px), 940px);
   overflow: hidden;
   background: var(--sand);
+}
+
+.banner-small {
+  height: clamp(340px, 62svh, 640px);
 }
 
 .banner > img {
@@ -334,48 +318,54 @@
   inset: 0;
 }
 
-.banner-small {
-  height: clamp(260px, 40vh, 400px);
-}
-
-.banner-tall {
-  height: clamp(420px, calc(100svh - var(--header) - 34px), 820px);
-}
-
-.banner-text .link-u {
-  margin-top: 8px;
-}
-
-.banner::after {
+.banner::after,
+.postcard::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgb(20 18 15 / 0.7), rgb(20 18 15 / 0.15) 75%);
+  background: rgb(20 18 15 / 0.22);
 }
 
-.banner-text {
+.banner-text,
+.postcard-text {
   position: relative;
   z-index: 1;
   display: grid;
   justify-items: center;
-  gap: 14px;
-  padding: 48px var(--gutter);
+  gap: 0;
+  max-width: 1100px;
+  padding: 0 var(--gutter);
   color: var(--on-photo);
   text-align: center;
-  text-shadow: 0 1px 14px rgb(20 18 15 / 0.35);
+  text-shadow: 0 1px 18px rgb(20 18 15 / 0.3);
 }
 
-.banner-text .kicker {
-  color: inherit;
+.lookbook {
+  margin: 0;
+  font: 400 clamp(26px, 3.4vw, 50px)/1.22 var(--serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-wrap: balance;
 }
 
-.banner-text h1 {
-  font-size: clamp(44px, 7vw, 96px);
-  line-height: 0.95;
+.lookbook em {
+  font-style: normal;
 }
 
-.banner-text p {
-  max-width: 54ch;
+.banner-text .link-u,
+.postcard-text .link-u {
+  margin-top: 28px;
+  text-shadow: none;
+}
+
+/* Texte d'introduction, sous la photo */
+.banner-intro {
+  max-width: 62ch;
+  margin: 0 auto;
+  padding: 48px var(--gutter) 0;
+  color: var(--soft);
+  font-size: 16px;
+  text-align: center;
 }
 
 /* ---------- Cartes ---------- */

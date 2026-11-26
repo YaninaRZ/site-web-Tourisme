@@ -48,7 +48,6 @@ export function ArticlePage() {
           kicker={`Le journal · ${formatDate(article.publishedAt)}`}
           title={article.title}
           intro={article.excerpt}
-          size="tall"
         />
         <div className="prose">
           <Link to="/blog" className="back">← Le journal</Link>
