@@ -1,39 +1,20 @@
 import { Link } from 'react-router'
-import { ArticleCard, PlaceCard, SectionHead, VideoCard } from '../components/Cards'
-import { categories, HERO_IMAGE } from '../data/seed'
+import { Banner, PlaceCard, SectionHead } from '../components/Cards'
+import { categories, HERO_IMAGE, PAGE_IMAGES } from '../data/seed'
 import { useContent } from '../data/store-context'
-import { byNewest, formatDate, photo, publicPlaces } from '../lib/format'
+import { photo, publicPlaces } from '../lib/format'
 
+// Accueil façon Sézane : une suite de bannières pleine largeur,
+// entrecoupées de sélections (univers, pépites, feed).
 export function Home() {
-  const { places, articles, videos } = useContent()
+  const { places } = useContent()
   const visible = publicPlaces(places)
-  const [featured, ...others] = [...articles].sort(byNewest)
 
   return (
     <>
-      {/* Bannière divisée : feed façon Instagram (3 × 4) et carte postale */}
-      <section className="hero">
-        <div className="feed" aria-label="Le feed UNSPYR">
-          {visible.slice(0, 12).map((p) => (
-            <Link key={p.id} to={`/lieux/${p.id}`} className="feed-tile">
-              <img src={photo(p.image, 400)} alt={p.title} />
-              <span className="feed-cap">
-                {p.title}
-                <small>{p.city}</small>
-              </span>
-            </Link>
-          ))}
-        </div>
-
-        <div className="postcard">
-          <img src={photo(HERO_IMAGE, 1600)} alt="Villefranche-sur-Mer au coucher du soleil" />
-          <div className="postcard-text">
-            <p className="lookbook">Bons baisers</p>
-            <h1 className="lookbook">de la Côte d’Azur</h1>
-            <Link to="/categories/spots" className="link-u">Découvrir les spots</Link>
-          </div>
-        </div>
-      </section>
+      <Banner image={HERO_IMAGE} kicker="Bons baisers" title="de la Côte d’Azur">
+        <Link to="/categories/spots" className="link-u">Découvrir les spots</Link>
+      </Banner>
 
       <section className="section">
         <SectionHead kicker="Le catalogue" title={<>Nos <em>univers</em></>} />
@@ -50,6 +31,10 @@ export function Home() {
         </div>
       </section>
 
+      <Banner image={PAGE_IMAGES.journal} kicker="Le journal" title="Récits de Riviera" level={2}>
+        <Link to="/blog" className="link-u">Lire le journal</Link>
+      </Banner>
+
       <section className="section">
         <SectionHead
           kicker="Sélection"
@@ -63,36 +48,22 @@ export function Home() {
         </div>
       </section>
 
-      {featured && (
-        <section className="section feature">
-          <Link to={`/blog/${featured.slug}`} className="feature-media">
-            <img src={photo(featured.cover, 1200)} alt="" loading="lazy" />
-          </Link>
-          <div className="feature-text">
-            <span className="kicker">Le journal · {formatDate(featured.publishedAt)}</span>
-            <h2>
-              <Link to={`/blog/${featured.slug}`}>{featured.title}</Link>
-            </h2>
-            <p>{featured.excerpt}</p>
-            <Link to={`/blog/${featured.slug}`} className="link-u">Lire l’article</Link>
-            <div className="feature-more">
-              {others.slice(0, 2).map((a) => (
-                <ArticleCard key={a.slug} article={a} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <Banner image={PAGE_IMAGES.videos} kicker="Micro-métrages" title="Selon votre profil" level={2}>
+        <Link to="/videos" className="link-u">Voir les vidéos</Link>
+      </Banner>
 
-      <section className="section section-sand">
-        <SectionHead
-          kicker="Micro-métrages"
-          title={<>La Riviera <em>selon votre profil</em></>}
-          link={{ to: '/videos', label: 'Toutes les vidéos' }}
-        />
-        <div className="video-grid">
-          {videos.slice(0, 4).map((v) => (
-            <VideoCard key={v.id} video={v} />
+      {/* Feed façon Instagram */}
+      <section className="section">
+        <SectionHead kicker="Le feed" title={<>Vu <em>par UNSPYR</em></>} />
+        <div className="feed">
+          {visible.slice(0, 12).map((p) => (
+            <Link key={p.id} to={`/lieux/${p.id}`} className="feed-tile">
+              <img src={photo(p.image, 500)} alt={p.title} loading="lazy" />
+              <span className="feed-cap">
+                {p.title}
+                <small>{p.city}</small>
+              </span>
+            </Link>
           ))}
         </div>
       </section>

@@ -63,6 +63,7 @@ export function Banner({
   title,
   intro,
   size = 'normal',
+  level = 1,
   children,
 }: {
   image: string
@@ -71,15 +72,18 @@ export function Banner({
   intro?: string
   /** small : pages utilitaires (mentions, recherche) */
   size?: 'small' | 'normal'
+  /** 2 pour les bannières qui suivent le titre principal de la page */
+  level?: 1 | 2
   children?: ReactNode
 }) {
+  const Heading = level === 1 ? 'h1' : 'h2'
   return (
     <>
       <header className={`banner banner-${size}`}>
-        {image && <img src={photo(image, 2000)} alt="" />}
+        {image && <img src={photo(image, 2200)} alt="" loading={level === 1 ? undefined : 'lazy'} />}
         <div className="banner-text">
           <p className="lookbook">{kicker}</p>
-          <h1 className="lookbook">{title}</h1>
+          <Heading className="lookbook">{title}</Heading>
           {children}
         </div>
       </header>
