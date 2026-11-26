@@ -218,6 +218,18 @@
   object-fit: cover;
 }
 
+/* Même étalonnage sur toutes les photos du site */
+.feed-tile img,
+.postcard > img,
+.banner > img,
+.card-media img,
+.feature-media img,
+.fiche-media img,
+.fiche-media video,
+.video-media img {
+  filter: var(--grade);
+}
+
 .feed-tile img {
   transition: transform 0.6s ease;
 }
@@ -323,7 +335,8 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgb(20 18 15 / 0.22);
+  /* Voile plus dense au centre, derrière le titre, et léger sur les bords */
+  background: radial-gradient(ellipse 60% 45% at center, rgb(20 18 15 / 0.34), rgb(20 18 15 / 0.08));
 }
 
 .banner-text,
@@ -735,6 +748,10 @@
   color: var(--soft);
   font-size: 17.5px;
   line-height: 1.8;
+}
+
+.article-date {
+  margin-bottom: 20px;
 }
 
 .narrow .prose {

@@ -24,6 +24,9 @@ Le brief cite Sézane comme référence d'univers de marque : chaleureux, narrat
   - Style « lookbook » Sézane : photo sur toute la hauteur de l'écran (`small` pour les pages utilitaires), voile léger uniforme, deux lignes de titre centrées au milieu en Instrument Serif majuscule espacée (classe `.lookbook`), sans italique.
   - Le texte d'introduction passe sous la photo.
   - La carte postale de l'accueil suit le même style.
+- **Visuels de bannière abstraits** : pas de paysages « carte postale ». On prend des ombres de palmier sur un mur, du lin dans la lumière, des textures d'eau, un parasol face à la mer. Ils sont listés dans `HERO_IMAGE`, `PAGE_IMAGES` et `categories[].image` (`seed.ts`). Les photos concrètes restent réservées aux lieux et aux articles.
+- **Étalonnage commun** : toutes les photos passent par le même filtre (`--grade` : désaturé, légèrement chaud) pour un rendu homogène.
+- **Lisibilité** : voile radial, plus dense derrière le titre et léger sur les bords.
 - **Fiche lieu** : photo ou vidéo à gauche, infos collantes à droite.
 
 ## Photos de démonstration

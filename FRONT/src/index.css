@@ -19,6 +19,9 @@
   /* Accent (rare : badges, alertes) */
   --accent: #9b4a2e;
 
+  /* Étalonnage commun des photos : tons chauds et désaturés, pour un rendu homogène */
+  --grade: saturate(0.82) sepia(0.12) contrast(0.96);
+
   /* Formes */
   --radius: 2px;
   --gutter: max(4vw, 16px);

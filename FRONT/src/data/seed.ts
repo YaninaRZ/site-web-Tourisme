@@ -4,16 +4,19 @@ import type { Article, Category, CommunityPost, Place, Video } from '../types'
 
 const u = (id: string) => `https://images.unsplash.com/photo-${id}`
 
-/** Photo « carte postale » de l'accueil */
-export const HERO_IMAGE = u('1703152792682-a1fe5f3dedb4')
+/** Photo « carte postale » de l'accueil. Les visuels de bannière sont volontairement abstraits (ombres, lumière, matières). */
+export const HERO_IMAGE = u('1564132254865-639bfec4c5bf')
 
-/** Bannières des pages sans contenu photo propre */
+/** Bannières des pages : visuels abstraits, façon lookbook */
 export const PAGE_IMAGES = {
-  search: u('1605373543615-9aec72041d20'),
-  contact: u('1768889555690-b800d681c84a'),
-  legal: u('1587579785043-eccb9f70391d'),
-  privacy: u('1794778951303-5a0ae6024534'),
-  notFound: u('1782039147990-0e41704d2dff'),
+  journal: u('1790513265840-7a847deed22b'),
+  videos: u('1616159988985-750036b28b40'),
+  app: u('1768827855114-4602186ec3d2'),
+  search: u('1555412654-72a95a495858'),
+  contact: u('1683803246983-f25c809557cb'),
+  legal: u('1789302557549-a36cb3ab0699'),
+  privacy: u('1728509807162-8941c3b10fa4'),
+  notFound: u('1769425158426-4966b7b370ce'),
 }
 
 export const categories: Category[] = [
@@ -22,28 +25,28 @@ export const categories: Category[] = [
     name: 'Sport & wellness',
     short: 'Sport & wellness',
     description: 'Bouger, respirer, nager : des rendez-vous pour prendre soin de soi face à la mer.',
-    image: u('1573590330099-d6c7355ec595'),
+    image: u('1706951323951-35afd6bd2f65'),
   },
   {
     slug: 'spots',
     name: 'Spots',
     short: 'Spots',
     description: 'Belvédères, ruelles et coins cachés qu’on garde pour soi.',
-    image: u('1559384291-f98066e5b7f1'),
+    image: u('1651835060162-64bebc55b425'),
   },
   {
     slug: 'safe-place',
     name: 'Safe place',
     short: 'Safe place',
     description: 'Des lieux calmes et bienveillants où l’on se sent bien, seul ou accompagné.',
-    image: u('1751118071798-0f6c368699a6'),
+    image: u('1682421938316-4b186e25174c'),
   },
   {
     slug: 'clubs-restaurants',
     name: 'Clubs & restaurants',
     short: 'Clubs & restos',
     description: 'Tables, bars et nuits de la Riviera, choisis pour leur caractère.',
-    image: u('1656671504766-11720e7e8bac'),
+    image: u('1641451029786-9caca048d9af'),
   },
 ]
 

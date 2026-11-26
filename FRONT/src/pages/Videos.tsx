@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Banner, VideoCard } from '../components/Cards'
+import { PAGE_IMAGES } from '../data/seed'
 import { useContent } from '../data/store-context'
 
 export function Videos() {
@@ -11,9 +12,9 @@ export function Videos() {
   return (
     <>
       <Banner
-        image={videos[0]?.poster ?? ''}
+        image={PAGE_IMAGES.videos}
         kicker="Micro-métrages"
-        title={<>La Riviera <em>selon votre profil</em></>}
+        title="Selon votre profil"
         intro="De courts films tournés sur la Côte d’Azur, pour les contemplatifs, les sportifs, les épicuriens et les noctambules."
       />
 

@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router'
 import { ArticleCard, Banner, SectionHead, VideoCard } from '../components/Cards'
+import { PAGE_IMAGES } from '../data/seed'
 import { useContent } from '../data/store-context'
 import { byNewest, formatDate } from '../lib/format'
 import { NotFound } from './NotFound'
@@ -11,9 +12,9 @@ export function Blog() {
   return (
     <>
       <Banner
-        image={sorted[0]?.cover ?? ''}
+        image={PAGE_IMAGES.journal}
         kicker="Le journal"
-        title={<>Récits de <em>Riviera</em></>}
+        title="Récits de Riviera"
         intro="Des articles de fond et des guides pour ralentir, écrits par l’équipe UNSPYR."
       />
       <section className="section">
@@ -45,12 +46,13 @@ export function ArticlePage() {
       <article className="article">
         <Banner
           image={article.cover}
-          kicker={`Le journal · ${formatDate(article.publishedAt)}`}
+          kicker="Le journal"
           title={article.title}
           intro={article.excerpt}
         />
         <div className="prose">
           <Link to="/blog" className="back">← Le journal</Link>
+          <span className="kicker article-date">{formatDate(article.publishedAt)}</span>
           {article.content.split(/\n\s*\n/).map((para, i) => (
             <p key={i}>{para}</p>
           ))}

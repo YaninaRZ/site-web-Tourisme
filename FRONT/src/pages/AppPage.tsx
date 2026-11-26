@@ -1,4 +1,5 @@
 import { Banner } from '../components/Cards'
+import { PAGE_IMAGES } from '../data/seed'
 
 const features = [
   {
@@ -23,9 +24,9 @@ export function AppPage() {
   return (
     <>
       <Banner
-        image="https://images.unsplash.com/photo-1693933714044-131908e39427"
+        image={PAGE_IMAGES.app}
         kicker="L’app UNSPYR"
-        title={<>Votre compagnon <em>de poche</em></>}
+        title="Votre compagnon de poche"
         intro="Sur iOS et Android, l’app emmène UNSPYR avec vous, et réserve quelques secrets à ses membres."
       />
       <section className="section">
