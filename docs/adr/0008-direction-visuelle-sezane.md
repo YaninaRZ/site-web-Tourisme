@@ -33,6 +33,7 @@ Le brief cite Sézane comme référence d'univers de marque : chaleureux, narrat
   - À gauche : titre lookbook, avantages de l'app, boutons App Store et Google Play. Ils pointent vers `/application` tant que l'app n'est pas publiée.
   - À droite : deux iPhones posés sur une photo abstraite.
   - Les iPhones sont dessinés en HTML/CSS plutôt qu'exportés de Figma. Ils restent nets à toute taille, reprennent les vraies photos, polices et couleurs du site, et se modifient dans le code.
+  - **Icônes** (`components/Icons.tsx`) : une icône au trait par catégorie (soleil sur les vagues, repère, feuille, verre à cocktail) et des icônes pour la barre d'onglets de l'app, toutes du même trait (1,5 px). Les boutons des stores portent les logos Apple et Google Play. Ces logos sont des marques : avant la mise en ligne, il faudra utiliser les badges officiels (« Download on the App Store », « Get it on Google Play ») en respectant leurs règles d'usage.
 
 ## Photos de démonstration
 

@@ -3,8 +3,9 @@
 // reprennent les vraies photos et la typographie du site.
 import type { ReactNode } from 'react'
 import { Link } from 'react-router'
-import { PAGE_IMAGES } from '../data/seed'
+import { categories, PAGE_IMAGES } from '../data/seed'
 import { photo } from '../lib/format'
+import { AppleLogo, CategoryIcon, GooglePlayLogo, TabIcon, type TabIconName } from './Icons'
 
 const u = (id: string) => `https://images.unsplash.com/photo-${id}`
 
@@ -34,13 +35,20 @@ function StatusBar() {
   )
 }
 
+const tabs: { icon: TabIconName; label: string }[] = [
+  { icon: 'home', label: 'Accueil' },
+  { icon: 'map', label: 'Carte' },
+  { icon: 'heart', label: 'Communauté' },
+  { icon: 'profile', label: 'Profil' },
+]
+
 function TabBar({ active }: { active: number }) {
   return (
     <nav className="ph-tabs" aria-hidden="true">
-      {['Accueil', 'Carte', 'Communauté', 'Profil'].map((label, i) => (
-        <span key={label} className={i === active ? 'on' : undefined}>
-          <i />
-          {label}
+      {tabs.map((t, i) => (
+        <span key={t.label} className={i === active ? 'on' : undefined}>
+          <TabIcon name={t.icon} size="1.9em" />
+          {t.label}
         </span>
       ))}
     </nav>
@@ -53,6 +61,16 @@ function HomeScreen() {
     <div className="ph-screen">
       <StatusBar />
       <div className="ph-logo">UNSPYR</div>
+      <div className="ph-cats">
+        {categories.map((c, i) => (
+          <span key={c.slug} className={i === 2 ? 'on' : undefined}>
+            <i>
+              <CategoryIcon slug={c.slug} size="1.9em" />
+            </i>
+            {c.slug === 'clubs-restaurants' ? 'Clubs' : c.slug === 'sport-wellness' ? 'Wellness' : c.short}
+          </span>
+        ))}
+      </div>
       <div className="ph-hero">
         <img src={photo(u('1619447998478-8d09f6a4948b'), 500)} alt="" loading="lazy" />
         <div>
@@ -63,11 +81,6 @@ function HomeScreen() {
       <div className="ph-tip">
         <span>Le tip UNSPYR</span>
         <p>Le fauteuil près de la fenêtre du fond est le plus calme de la maison.</p>
-      </div>
-      <div className="ph-chips">
-        <span>Spots</span>
-        <span>Wellness</span>
-        <span>Clubs</span>
       </div>
       <TabBar active={0} />
     </div>
@@ -121,13 +134,19 @@ export function AppCta() {
           ))}
         </ul>
         <div className="stores">
-          <Link to="/application" className="store">
-            <small>Bientôt sur</small>
-            App Store
+          <Link to="/application" className="store" aria-label="Télécharger dans l’App Store">
+            <AppleLogo size={26} />
+            <span>
+              <small>Télécharger dans</small>
+              App Store
+            </span>
           </Link>
-          <Link to="/application" className="store">
-            <small>Bientôt sur</small>
-            Google Play
+          <Link to="/application" className="store" aria-label="Disponible sur Google Play">
+            <GooglePlayLogo size={22} />
+            <span>
+              <small>Disponible sur</small>
+              Google Play
+            </span>
           </Link>
         </div>
       </div>
