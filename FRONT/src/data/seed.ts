@@ -7,6 +7,15 @@ const u = (id: string) => `https://images.unsplash.com/photo-${id}`
 /** Photo « carte postale » de l'accueil */
 export const HERO_IMAGE = u('1703152792682-a1fe5f3dedb4')
 
+/** Bannières des pages sans contenu photo propre */
+export const PAGE_IMAGES = {
+  search: u('1605373543615-9aec72041d20'),
+  contact: u('1768889555690-b800d681c84a'),
+  legal: u('1587579785043-eccb9f70391d'),
+  privacy: u('1794778951303-5a0ae6024534'),
+  notFound: u('1782039147990-0e41704d2dff'),
+}
+
 export const categories: Category[] = [
   {
     slug: 'sport-wellness',

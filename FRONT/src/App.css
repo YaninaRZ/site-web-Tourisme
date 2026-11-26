@@ -306,8 +306,7 @@
   margin: 0 auto;
 }
 
-.section-head,
-.page-head {
+.section-head {
   display: grid;
   justify-items: center;
   gap: 12px;
@@ -317,15 +316,6 @@
 
 .section-head h2 {
   font-size: clamp(34px, 4vw, 52px);
-}
-
-.page-head h1 {
-  font-size: clamp(42px, 6vw, 72px);
-}
-
-.page-head p {
-  max-width: 56ch;
-  color: var(--mute);
 }
 
 /* ---------- Bandeau des pages intérieures ---------- */
@@ -342,6 +332,18 @@
 .banner > img {
   position: absolute;
   inset: 0;
+}
+
+.banner-small {
+  height: clamp(260px, 40vh, 400px);
+}
+
+.banner-tall {
+  height: clamp(420px, calc(100svh - var(--header) - 34px), 820px);
+}
+
+.banner-text .link-u {
+  margin-top: 8px;
 }
 
 .banner::after {
@@ -736,31 +738,6 @@
 
 /* ---------- Article ---------- */
 
-.article-head {
-  display: grid;
-  justify-items: center;
-  gap: 14px;
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 56px var(--gutter) 44px;
-  text-align: center;
-}
-
-.article-head .back {
-  margin-bottom: 8px;
-}
-
-.article-head h1 {
-  font-size: clamp(42px, 6vw, 78px);
-  line-height: 0.98;
-}
-
-.article-cover {
-  width: 100%;
-  height: clamp(320px, 70vh, 760px);
-  object-fit: cover;
-}
-
 .prose {
   max-width: 680px;
   margin: 0 auto;
@@ -778,7 +755,7 @@
   margin-top: 1.2em;
 }
 
-.article .prose > p:first-child::first-letter {
+.article .prose > p:first-of-type::first-letter {
   float: left;
   margin: 6px 10px 0 0;
   color: var(--ink);
@@ -942,18 +919,6 @@
 
 .features p {
   color: var(--mute);
-}
-
-.lost {
-  display: grid;
-  justify-items: center;
-  gap: 24px;
-  padding-block: 120px;
-  text-align: center;
-}
-
-.lost h1 {
-  font-size: clamp(42px, 6vw, 76px);
 }
 
 /* ---------- Back-office ---------- */

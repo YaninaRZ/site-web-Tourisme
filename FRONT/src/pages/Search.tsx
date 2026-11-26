@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router'
-import { ArticleCard, PlaceCard, VideoCard } from '../components/Cards'
-import { getCategory } from '../data/seed'
+import { ArticleCard, Banner, PlaceCard, VideoCard } from '../components/Cards'
+import { getCategory, PAGE_IMAGES } from '../data/seed'
 import { useContent } from '../data/store-context'
 import { normalize, publicPlaces } from '../lib/format'
 
@@ -29,6 +29,13 @@ export function Search() {
   const total = foundPlaces.length + foundArticles.length + foundVideos.length
 
   return (
+    <>
+    <Banner
+      image={PAGE_IMAGES.search}
+      kicker="Recherche"
+      title={<>Où allons-<em>nous</em> ?</>}
+      size="small"
+    />
     <section className="section search">
       <form role="search" className="search-form" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="q" className="kicker">Rechercher un lieu, une ville, un article</label>
@@ -80,5 +87,6 @@ export function Search() {
       )}
       {hasQuery && total === 0 && <p className="empty">Aucun résultat. Essayez un autre mot, ou le nom d’une ville.</p>}
     </section>
+    </>
   )
 }

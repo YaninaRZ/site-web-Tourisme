@@ -1,15 +1,20 @@
 // Brouillons à valider par l'équipe (et idéalement relus par un juriste).
 // Les passages entre crochets sont à compléter.
 import { Link } from 'react-router'
+import { Banner } from '../components/Cards'
+import { PAGE_IMAGES } from '../data/seed'
 
 export function MentionsLegales() {
   return (
+    <>
+    <Banner
+      image={PAGE_IMAGES.legal}
+      kicker="Informations"
+      title="Mentions légales"
+      intro="Brouillon à compléter avant la mise en ligne."
+      size="small"
+    />
     <section className="section narrow">
-      <header className="page-head">
-        <span className="kicker">Informations</span>
-        <h1>Mentions légales</h1>
-        <p>Brouillon à compléter avant la mise en ligne.</p>
-      </header>
       <div className="prose">
         <h2>Éditeur du site</h2>
         <p>
@@ -30,17 +35,21 @@ export function MentionsLegales() {
         </p>
       </div>
     </section>
+    </>
   )
 }
 
 export function Confidentialite() {
   return (
+    <>
+    <Banner
+      image={PAGE_IMAGES.privacy}
+      kicker="Informations"
+      title="Confidentialité"
+      intro="Brouillon à valider : il décrit ce que le site collecte aujourd’hui."
+      size="small"
+    />
     <section className="section narrow">
-      <header className="page-head">
-        <span className="kicker">Informations</span>
-        <h1>Confidentialité</h1>
-        <p>Brouillon à valider : il décrit ce que le site collecte aujourd’hui.</p>
-      </header>
       <div className="prose">
         <h2>Données collectées</h2>
         <p>
@@ -66,5 +75,6 @@ export function Confidentialite() {
         </p>
       </div>
     </section>
+    </>
   )
 }

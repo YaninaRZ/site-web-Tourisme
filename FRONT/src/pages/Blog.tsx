@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router'
 import { ArticleCard, Banner, SectionHead, VideoCard } from '../components/Cards'
 import { useContent } from '../data/store-context'
-import { byNewest, formatDate, photo } from '../lib/format'
+import { byNewest, formatDate } from '../lib/format'
 import { NotFound } from './NotFound'
 
 export function Blog() {
@@ -43,14 +43,15 @@ export function ArticlePage() {
   return (
     <>
       <article className="article">
-        <header className="article-head">
-          <Link to="/blog" className="back">← Le journal</Link>
-          <span className="kicker">{formatDate(article.publishedAt)}</span>
-          <h1>{article.title}</h1>
-          <p className="lead">{article.excerpt}</p>
-        </header>
-        <img className="article-cover" src={photo(article.cover, 1800)} alt="" />
+        <Banner
+          image={article.cover}
+          kicker={`Le journal · ${formatDate(article.publishedAt)}`}
+          title={article.title}
+          intro={article.excerpt}
+          size="tall"
+        />
         <div className="prose">
+          <Link to="/blog" className="back">← Le journal</Link>
           {article.content.split(/\n\s*\n/).map((para, i) => (
             <p key={i}>{para}</p>
           ))}

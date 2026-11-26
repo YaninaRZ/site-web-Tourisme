@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router'
+import { Banner } from '../components/Cards'
+import { PAGE_IMAGES } from '../data/seed'
 import { useContent } from '../data/store-context'
 
 const empty = { name: '', email: '', subject: '', message: '' }
@@ -20,14 +22,14 @@ export function Contact() {
   }
 
   return (
+    <>
+    <Banner
+      image={PAGE_IMAGES.contact}
+      kicker="Contact"
+      title={<>Écrivez-<em>nous</em></>}
+      intro="Une adresse à nous souffler, un partenariat, une question sur l’app : on vous répond sous quelques jours."
+    />
     <section className="section narrow">
-      <header className="page-head">
-        <span className="kicker">Contact</span>
-        <h1>
-          Écrivez-<em>nous</em>
-        </h1>
-        <p>Une adresse à nous souffler, un partenariat, une question sur l’app : on vous répond sous quelques jours.</p>
-      </header>
 
       {sent ? (
         <div className="notice" role="status">
@@ -64,5 +66,6 @@ export function Contact() {
         </form>
       )}
     </section>
+    </>
   )
 }

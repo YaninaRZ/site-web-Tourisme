@@ -62,19 +62,25 @@ export function Banner({
   kicker,
   title,
   intro,
+  size = 'normal',
+  children,
 }: {
   image: string
   kicker: string
   title: ReactNode
   intro?: string
+  /** small : pages utilitaires · tall : article, 404 */
+  size?: 'small' | 'normal' | 'tall'
+  children?: ReactNode
 }) {
   return (
-    <header className="banner">
+    <header className={`banner banner-${size}`}>
       {image && <img src={photo(image, 1800)} alt="" />}
       <div className="banner-text">
         <span className="kicker">{kicker}</span>
         <h1>{title}</h1>
         {intro && <p>{intro}</p>}
+        {children}
       </div>
     </header>
   )
